@@ -380,6 +380,10 @@ musl also does not implement the following glibc bugs:
 - glibc provides two versions of `basename`. The one declared in stdlib.h has
   alternate semantics and signature that conflict with the standard. musl only
   provides the standard one.
+- glibc provides two versions of `strerror_r`. When
+  `(_POSIX_C_SOURCE >= 200112L) && ! _GNU_SOURCE` is true, it exhibits standard
+  behavior, otherwise it has alternate semantics and signature that conflict
+  with the standard. musl only provides the standard one.
 - glibc provides a thread-safe `system`. Thread safety for `system` is not 
   required by POSIX and musl's version is not thread-safe.
 
